@@ -25,7 +25,13 @@
                 <action android:name="android.intent.action.INPUT_METHOD_CHANGED" />
                 <action android:name="android.intent.action.TIMEZONE_CHANGED"></action>
                 <action android:name="net.ivanvega.mibroadcastreceiverytelefonia.MIBROACAST"></action>
+
             </intent-filter>
+        </receiver>
+
+
+        <receiver android:name=".receivers.MiReceiverTelefonia">
+
         </receiver>
 
 

@@ -13,12 +13,16 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import net.ivanvega.mibroadcastreceiverytelefonia.receivers.MiReceiverTelefonia;
 import net.ivanvega.mibroadcastreceiverytelefonia.receivers.MyBroadcastReceiver;
 
 public class MainActivity extends AppCompatActivity {
     MyBroadcastReceiver myBroadcastReceiver=
             new MyBroadcastReceiver();
+
+    MiReceiverTelefonia miReceiverTelefonia = new MiReceiverTelefonia();
 
     Button btnS;
     TextView lbl;
@@ -52,6 +56,21 @@ public class MainActivity extends AppCompatActivity {
         this.registerReceiver(myBroadcastReceiver, filter);
 
 
+
+
+
+        //Telephony.Sms .Intents.SMS_RECEIVED_ACTION
+
+        IntentFilter intentFilterTel = new IntentFilter(Telephony.Sms .Intents.SMS_RECEIVED_ACTION);
+
+        getApplicationContext().registerReceiver(miReceiverTelefonia,
+                intentFilterTel
+        );
+
+
+
+
+
     }
 
     private void enviarSMS(String tel, String msj) {
@@ -59,6 +78,13 @@ public class MainActivity extends AppCompatActivity {
 
          smsManager.sendTextMessage(tel,null, msj,
          null, null);
+
+
+
+        Toast.makeText(
+                this, "Mensaje enviado",
+                Toast.LENGTH_LONG
+        ).show();
     }
 
 
