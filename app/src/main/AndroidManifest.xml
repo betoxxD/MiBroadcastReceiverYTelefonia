@@ -2,7 +2,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="net.ivanvega.mibroadcastreceiverytelefonia">
 
-    <uses-permission android:name="android.permission.SEND_SMS"></uses-permission>
+    <uses-permission android:name="android.permission.SEND_SMS"/>
+    <uses-permission android:name="android.permission.READ_CALL_LOG"/>
+    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
 
     <application
         android:allowBackup="true"
@@ -23,15 +25,20 @@
             <intent-filter>
                 <action android:name="android.intent.action.BOOT_COMPLETED"/>
                 <action android:name="android.intent.action.INPUT_METHOD_CHANGED" />
-                <action android:name="android.intent.action.TIMEZONE_CHANGED"></action>
-                <action android:name="net.ivanvega.mibroadcastreceiverytelefonia.MIBROACAST"></action>
-
+                <action android:name="android.intent.action.TIMEZONE_CHANGED"/>
+                <action android:name="net.ivanvega.mibroadcastreceiverytelefonia.MIBROACAST"/>
             </intent-filter>
         </receiver>
 
 
         <receiver android:name=".receivers.MiReceiverTelefonia">
 
+        </receiver>
+
+        <receiver android:name=".receivers.MyReceiverCalls">
+            <intent-filter>
+                <action android:name="android.intent.action.PHONE_STATE"/>
+            </intent-filter>
         </receiver>
 
 
